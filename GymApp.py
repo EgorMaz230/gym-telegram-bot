@@ -9,6 +9,24 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.daemon = True
+    t.start()
+
+keep_alive()
 
 TOKEN = "8981394220:AAFHcPKw3y4n0mO0nnDcOzYPO7zIARhJDMc"
 bot = telebot.TeleBot(TOKEN)
