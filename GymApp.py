@@ -28,7 +28,10 @@ def keep_alive():
 
 keep_alive()
 
-TOKEN = "8981394220:AAFHcPKw3y4n0mO0nnDcOzYPO7zIARhJDMc"
+import os
+
+# Считываем токен из переменных окружения сервера
+TOKEN = os.environ.get("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 user_chat_id = None
